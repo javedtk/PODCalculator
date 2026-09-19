@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Smart Calculator - Multi Tool</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="glass">
+
+  <!-- Theme Switcher -->
+  <div class="theme-switcher">
+    <button class="theme-btn" data-theme-btn="glass" title="Glass Theme">💎</button>
+    <button class="theme-btn" data-theme-btn="dark" title="Dark Theme">🌙</button>
+    <button class="theme-btn" data-theme-btn="neon" title="Neon Theme">⚡</button>
+  </div>
+
+  <div class="app-container">
+    <!-- Tab Navigation -->
+    <nav class="tabs">
+      <button class="tab active" data-tab="calc">🧮 Calculator</button>
+      <button class="tab" data-tab="currency">💱 Currency</button>
+      <button class="tab" data-tab="units">📏 Units</button>
+    </nav>
+
+    <!-- ============ CALCULATOR TAB ============ -->
+    <section class="tab-content active" id="calc-tab">
+      <div class="calculator">
+        <div class="display">
+          <div class="history" id="history"></div>
+          <div class="current" id="current">0</div>
+        </div>
+        <div class="buttons">
+          <button class="function" onclick="clearAll()">AC</button>
+          <button class="function" onclick="deleteLast()">DEL</button>
+          <button class="operator" onclick="appendValue('%')">%</button>
+          <button class="operator" onclick="appendValue('/')">÷</button>
+
+          <button onclick="appendValue('7')">7</button>
+          <button onclick="appendValue('8')">8</button>
+          <button onclick="appendValue('9')">9</button>
+          <button class="operator" onclick="appendValue('*')">×</button>
+
+          <button onclick="appendValue('4')">4</button>
+          <button onclick="appendValue('5')">5</button>
+          <button onclick="appendValue('6')">6</button>
+          <button class="operator" onclick="appendValue('-')">−</button>
+
+          <button onclick="appendValue('1')">1</button>
+          <button onclick="appendValue('2')">2</button>
+          <button onclick="appendValue('3')">3</button>
+          <button class="operator" onclick="appendValue('+')">+</button>
+
+          <button class="zero" onclick="appendValue('0')">0</button>
+          <button onclick="appendValue('.')">.</button>
+          <button class="equals" onclick="calculate()">=</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CURRENCY TAB ============ -->
+    <section class="tab-content" id="currency-tab">
+      <div class="card">
+        <h2 class="card-title">💱 Currency Converter</h2>
+        <p class="card-subtitle">Live exchange rates (updated daily)</p>
+
+        <div class="converter-row">
+          <div class="input-group">
+            <label>Amount</label>
+            <input type="number" id="curr-amount" value="1" min="0" />
+          </div>
+          <div class="input-group">
+            <label>From</label>
+            <select id="curr-from"></select>
+          </div>
+        </div>
+
+        <div class="swap-btn-wrap">
+          <button class="swap-btn" onclick="swapCurrencies()">⇅</button>
+        </div>
+
+        <div class="converter-row">
+          <div class="input-group full">
+            <label>To</label>
+            <select id="curr-to"></select>
+          </div>
+        </div>
+
+        <button class="action-btn" onclick="convertCurrency()">Convert</button>
+
+        <div class="result-box" id="curr-result">
+          <span class="result-value">—</span>
+          <span class="result-rate"></span>
+        </div>
+
+        <p class="note" id="curr-note">Rates load ho rahi hain...</p>
+      </div>
+    </section>
+
+    <!-- ============ UNITS TAB ============ -->
+    <section class="tab-content" id="units-tab">
+      <div class="card">
+        <h2 class="card-title">📏 Unit Converter</h2>
+        <p class="card-subtitle">Length, Weight, Temperature, Area, Speed, Time</p>
+
+        <div class="input-group full">
+          <label>Category</label>
+          <select id="unit-category" onchange="loadUnitOptions()">
+            <option value="length">📐 Length</option>
+            <option value="weight">⚖️ Weight</option>
+            <option value="temperature">🌡️ Temperature</option>
+            <option value="area">🔲 Area</option>
+            <option value="speed">🚀 Speed</option>
+            <option value="time">⏱️ Time</option>
+          </select>
+        </div>
+
+        <div class="converter-row">
+          <div class="input-group">
+            <label>Value</label>
+            <input type="number" id="unit-value" value="1" />
+          </div>
+          <div class="input-group">
+            <label>From</label>
+            <select id="unit-from" onchange="convertUnits()"></select>
+          </div>
+        </div>
+
+        <div class="swap-btn-wrap">
+          <button class="swap-btn" onclick="swapUnits()">⇅</button>
+        </div>
+
+        <div class="input-group full">
+          <label>To</label>
+          <select id="unit-to" onchange="convertUnits()"></select>
+        </div>
+
+        <div class="result-box" id="unit-result">
+          <span class="result-value">—</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
