@@ -20,7 +20,7 @@ const savedTheme = localStorage.getItem('calc-theme') || 'glass';
 setTheme(savedTheme);
 
 /* ==========================================================
-   TAB NAVIGATION 
+   TAB NAVIGATION System
    ========================================================== */
 const tabs = document.querySelectorAll('.tab');
 const tabContents = document.querySelectorAll('.tab-content');
