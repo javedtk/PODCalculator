@@ -5,7 +5,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* ==================== THEME VARIABLES ==================== */
+/* ===================== THEME VARIABLES ===================== */
 body[data-theme="glass"] {
   --bg: linear-gradient(135deg, #1e1e2f 0%, #2d2d44 50%, #1a1a2e 100%);
   --blob1: #7f5af0;
